@@ -19,6 +19,11 @@ def messages(connect,msg):
 			retmsg="DISCONNECT: 0\nPORT: 0\nCLIENT_NAME: Name\n"
 			connect.sendall(retmsg)
 			connection.close()
+		elif msg[:4]=="HELO":
+				print "HELO Received: "+receive
+				msg="%sIP:%s\nPort:%s\nStudentID:13319829\n"%(msg,str(gethostbyname(gethostname())),int(sys.argv[2]))
+				connect.sendall(msg)
+				print "HELO Sent"
 		else:
 			errmsg="ERROR_CODE:1\nERROR_DESCRIPTION: Parse error\n"
 			connect.sendall(errmsg)
