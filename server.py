@@ -20,7 +20,7 @@ def messages(connect,msg):
 			connect.sendall(retmsg)
 			connection.close()
 		elif msg[:4]=="HELO":
-				print "HELO Received: "+receive
+				print "HELO Received: "+msg
 				msg="%sIP:%s\nPort:%s\nStudentID:13319829\n"%(msg,str(gethostbyname(gethostname())),int(sys.argv[2]))
 				connect.sendall(msg)
 				print "HELO Sent"
