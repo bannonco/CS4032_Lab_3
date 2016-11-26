@@ -7,10 +7,10 @@ from threading import Thread
 def messages(connect,msg):
 	try:
 		if msg[:13] == "JOIN_CHATROOM":
-			retmsg="JOINED_CHATROOM: Chatroom\nSERVER_IP:0\nPORT:0\nROOM_REF:1\nJOIN_ID: 0\n"
+			retmsg="JOINED_CHATROOM: room1\nSERVER_IP:0\nPORT:0\nROOM_REF:1\nJOIN_ID: 0\n"
 			connect.sendall(retmsg)
 		elif msg[:14] =="LEAVE_CHATROOM":
-			retmsg="LEFT_CHATROOM: Chatroom\nJOIN_ID: 0\n"
+			retmsg="LEFT_CHATROOM: room1\nJOIN_ID: 0\n"
 			connect.sendall(retmsg)
 		elif msg[:4] =="CHAT":
 			retmsg="CHAT: 1\nCLIENT_NAME: Name\nMESSAGE: Hello\n"
@@ -20,7 +20,7 @@ def messages(connect,msg):
 			connect.sendall(retmsg)
 			connection.close()
 		elif msg[:4]=="HELO":
-				print "HELO Received: "+receive
+				print "HELO Received: "+msg
 				msg="%sIP:%s\nPort:%s\nStudentID:13319829\n"%(msg,str(gethostbyname(gethostname())),int(sys.argv[2]))
 				connect.sendall(msg)
 				print "HELO Sent"
