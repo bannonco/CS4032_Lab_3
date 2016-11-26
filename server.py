@@ -7,7 +7,7 @@ from threading import Thread
 def messages(connect,msg):
 	try:
 		if msg[:13] == "JOIN_CHATROOM":
-			retmsg="JOINED_CHATROOM: room1\nSERVER_IP:0\nPORT:0\nROOM_REF:1\nJOIN_ID: 0\n"
+			retmsg="JOINED_CHATROOM: room1\nSERVER_IP: 0\nPORT: 0\nROOM_REF: 1\nJOIN_ID: 0\n"
 			connect.sendall(retmsg)
 		elif msg[:14] =="LEAVE_CHATROOM":
 			retmsg="LEFT_CHATROOM: room1\nJOIN_ID: 0\n"
